@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Anniversary Countdown</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f8f9fa;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 0;
+    }
+    .countdown-card {
+      background-color: rgba(255, 255, 255, 0.8);
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      padding: 3rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+    .countdown-title {
+      color: #ff4e50;
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .countdown-text {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      color: #333;
+    }
+    .message img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid #ff4e50;
+    }
+    .message h2 {
+      margin-top: 1rem;
+      font-size: 1.75rem;
+      color: #333;
+      font-weight: 600;
+    }
+    .message p {
+      font-size: 1rem;
+      color: #777;
+    }
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.875rem;
+      color: #777;
+    }
+    .images img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin: 10px;
+      border-radius: 10px;
+      border: 4px solid #ff4e50;
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bgMusic" loop>
+    <source src="Strawberries_Cigarettes.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- Centering the button -->
+  
+
+  <div class="container">
+    <div class="card countdown-card mx-auto">
+      <div class="card-body">
+        <h1 class="countdown-title">How Long We've Been Together</h1>
+        <div id="timeElapsed" class="countdown-text"></div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mb-4">
+      <button onclick="playMusic()" class="btn btn-danger">Play Music</button>
+    </div>
+    <div class="message text-center mt-4">
+      <img src="main.jpeg" alt="Image 1" class="img-fluid" />
+      <h2>To My Special Someone</h2>
+      <p>
+
+        Hello my love, I made this website just for you. I want you to know how much you mean to me. Even if we’re far apart, I will always love you. You bring so much joy to my life, and I’m so thankful for you. You’re not just my partner, but my best friend, and I can’t imagine life without you.
+        
+        No matter what happens, I’ll always be here for you. Whatever problems you face, I’m right here by your side. You make everything better, and I will always treasure you. You fill my life with happiness, and even on tough days, you make me smile.
+        
+        Being with you feels like a dream, and I will always make sure you feel loved and appreciated. You are my greatest love, and I will never take you for granted. I’m excited for the future we will build together, and I will cherish every moment with you.
+        
+        You mean the world to me, and no matter where life takes us, we will always have each other. My heart beats for you. I love you more than words can say. I can’t wait for the day we’re together again. I love you always, bebi, baby, love</p>
+    </div>
+
+    <div class="images text-center mt-4">
+      <img src="1.jpeg" alt="Image 2" />
+      <img src="2.jpeg" alt="Image 3" />
+      <img src="3.jpeg" alt="Image 4" />
+    </div>
+
+    <div class="footer text-center">
+      <p>Made with love &hearts; John Lester Defensor</p>
+    </div>
+  </div>
+
+  <script>
+    const startDate = new Date("Nov 22, 2024 00:00:00").getTime();
+    const timeElapsedDisplay = document.getElementById("timeElapsed");
+  
+    function updateTime() {
+      const now = new Date().getTime();
+      let timeDiff = now - startDate;
+  
+      const months = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30));
+      timeDiff -= months * (1000 * 60 * 60 * 24 * 30);
+  
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      timeDiff -= days * (1000 * 60 * 60 * 24);
+  
+      const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+      timeDiff -= hours * (1000 * 60 * 60);
+  
+      const minutes = Math.floor(timeDiff / (1000 * 60));
+      timeDiff -= minutes * (1000 * 60);
+  
+      const seconds = Math.floor(timeDiff / 1000);
+  
+      // Updated line to include seconds
+      timeElapsedDisplay.innerHTML = `${months} months ${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+    }
+  
+    function playMusic() {
+      document.getElementById('bgMusic').play();
+    }
+  
+    setInterval(updateTime, 1000);  // Update every second
+    updateTime();  // Initial display
+  </script>
+  
+</body>
+</html>
